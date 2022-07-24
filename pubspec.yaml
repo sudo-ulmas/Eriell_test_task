@@ -1,0 +1,40 @@
+name: eriell
+description: A new Flutter project.
+
+publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+
+version: 1.0.0+1
+
+environment:
+  sdk: ">=2.17.1 <3.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+
+  cupertino_icons: ^1.0.2
+  bloc: ^8.0.3
+  flutter_bloc: ^8.0.1
+  go_router: ^4.2.1
+  google_fonts: ^3.0.1
+  flutter_svg: ^1.1.1+1
+  freezed_annotation: ^0.14.0
+  json_annotation: ^4.0.0
+  pie_chart: ^5.3.2
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  build_runner: ^1.11.5
+  json_serializable: ^4.0.2
+  freezed: ^0.14.0+1 
+
+  flutter_lints: ^2.0.0
+
+flutter:
+
+  uses-material-design: true
+  assets:
+    - assets/
+
