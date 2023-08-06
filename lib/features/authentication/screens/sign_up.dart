@@ -1,19 +1,22 @@
 import 'package:eriell/core/consts/app_colors.dart';
 import 'package:eriell/core/consts/app_strings.dart';
-import 'package:eriell/features/authentication/blocs/login_cubit.dart';
+import 'package:eriell/core/widgets/app_snackbar.dart';
+import 'package:eriell/features/authentication/blocs/sign_up_cubit.dart';
+import 'package:eriell/models/user.dart';
+import 'package:eriell/repositories/hive_repository.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import '../../../core/extensions/validators.dart';
 
-class LoginScreen extends StatefulWidget {
-  const LoginScreen({Key? key}) : super(key: key);
+class SignUpScreen extends StatefulWidget {
+  const SignUpScreen({Key? key}) : super(key: key);
 
   @override
-  State<LoginScreen> createState() => _LoginScreenState();
+  State<SignUpScreen> createState() => _SignUpScreenState();
 }
 
-class _LoginScreenState extends State<LoginScreen> {
+class _SignUpScreenState extends State<SignUpScreen> {
   late TextEditingController nameController;
   late TextEditingController emailController;
   late TextEditingController passwordController;
@@ -37,7 +40,7 @@ class _LoginScreenState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => LoginCubit(),
+      create: (context) => SingUpCubit(HiveRepository()),
       child: CupertinoPageScaffold(
         navigationBar: const CupertinoNavigationBar(
           middle: Text('Sign up'),
@@ -85,16 +88,18 @@ class _LoginScreenState extends State<LoginScreen> {
                   ),
                 ],
               ),
-              const SizedBox(height: 12),
-              BlocConsumer<LoginCubit, LoginState>(
+              const SizedBox(height: 24),
+              BlocConsumer<SingUpCubit, SingUpState>(
                 listener: (context, state) {
-                  if (state is LoginSuccess) {
+                  if (state is SingUpSuccess) {
                     context.go('/');
+                  } else if (state is SingUpFailed) {
+                    AppSnackbar(message: state.error).build(context);
                   }
                 },
                 builder: (context, state) => CupertinoButton(
                   color: AppColor.blue,
-                  child: state is LoginInProgress
+                  child: state is SingUpInProgress
                       ? const CupertinoActivityIndicator(
                           color: AppColor.white,
                         )
@@ -111,11 +116,25 @@ class _LoginScreenState extends State<LoginScreen> {
                     if (name.nameIsValid &&
                         email.emailIsValid &&
                         password.passwordIsValid) {
-                      context.read<LoginCubit>().login(name, email, password);
+                      context.read<SingUpCubit>().signUp(
+                          User(name: name, email: email, password: password));
                     }
                   },
                 ),
               ),
+              const SizedBox(height: 12),
+              CupertinoButton(
+                color: AppColor.white,
+                child: const Text(
+                  'Sign in',
+                  style: TextStyle(
+                    color: AppColor.blue,
+                  ),
+                ),
+                onPressed: () {
+                  context.go('/sign_in');
+                },
+              )
             ],
           ),
         ),
