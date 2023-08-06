@@ -25,6 +25,7 @@ class CupertinoThemeProvider extends InheritedWidget {
       textTheme(),
       AppColor.white,
       AppColor.white,
+      true,
     );
   }
 
