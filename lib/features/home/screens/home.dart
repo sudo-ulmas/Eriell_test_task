@@ -1,4 +1,6 @@
-import 'package:eriell/features/sign_in/blocs/login_cubit.dart';
+import 'dart:io';
+
+import 'package:eriell/features/sign_in/blocs/auth_cubit.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -14,14 +16,18 @@ class HomeScreen extends StatelessWidget {
   };
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<LoginCubit, LoginState>(
+    return BlocBuilder<AuthCubit, AuthState>(
       builder: (context, state) => state.maybeWhen(
-        success: (name) => CupertinoPageScaffold(
+        success: (name) => AppScaffold(
           navigationBar: CupertinoNavigationBar(
             middle: Text('Welcome Home $name'),
           ),
-          child: OrientationBuilder(
+          appbar: AppBar(
+            title: Text('Welcome Home $name'),
+          ),
+          body: OrientationBuilder(
             builder: (context, orientation) => Column(
+              mainAxisSize: MainAxisSize.min,
               children: [
                 if (orientation == Orientation.portrait)
                   PieChart(
@@ -58,5 +64,30 @@ class HomeScreen extends StatelessWidget {
         orElse: () => const SizedBox.shrink(),
       ),
     );
+  }
+}
+
+class AppScaffold extends StatelessWidget {
+  const AppScaffold({
+    super.key,
+    required this.appbar,
+    required this.navigationBar,
+    required this.body,
+  });
+  final PreferredSizeWidget appbar;
+  final ObstructingPreferredSizeWidget navigationBar;
+  final Widget body;
+
+  @override
+  Widget build(BuildContext context) {
+    return Platform.isIOS
+        ? CupertinoPageScaffold(
+            navigationBar: navigationBar,
+            child: body,
+          )
+        : Scaffold(
+            appBar: appbar,
+            body: body,
+          );
   }
 }

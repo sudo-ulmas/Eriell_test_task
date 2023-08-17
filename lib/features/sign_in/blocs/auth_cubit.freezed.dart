@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'login_cubit.dart';
+part of 'auth_cubit.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -15,7 +15,7 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
-mixin _$LoginState {
+mixin _$AuthState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
@@ -75,16 +75,15 @@ mixin _$LoginState {
 }
 
 /// @nodoc
-abstract class $LoginStateCopyWith<$Res> {
-  factory $LoginStateCopyWith(
-          LoginState value, $Res Function(LoginState) then) =
-      _$LoginStateCopyWithImpl<$Res, LoginState>;
+abstract class $AuthStateCopyWith<$Res> {
+  factory $AuthStateCopyWith(AuthState value, $Res Function(AuthState) then) =
+      _$AuthStateCopyWithImpl<$Res, AuthState>;
 }
 
 /// @nodoc
-class _$LoginStateCopyWithImpl<$Res, $Val extends LoginState>
-    implements $LoginStateCopyWith<$Res> {
-  _$LoginStateCopyWithImpl(this._value, this._then);
+class _$AuthStateCopyWithImpl<$Res, $Val extends AuthState>
+    implements $AuthStateCopyWith<$Res> {
+  _$AuthStateCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -101,7 +100,7 @@ abstract class _$$LoginInitialCopyWith<$Res> {
 
 /// @nodoc
 class __$$LoginInitialCopyWithImpl<$Res>
-    extends _$LoginStateCopyWithImpl<$Res, _$LoginInitial>
+    extends _$AuthStateCopyWithImpl<$Res, _$LoginInitial>
     implements _$$LoginInitialCopyWith<$Res> {
   __$$LoginInitialCopyWithImpl(
       _$LoginInitial _value, $Res Function(_$LoginInitial) _then)
@@ -115,7 +114,7 @@ class _$LoginInitial implements LoginInitial {
 
   @override
   String toString() {
-    return 'LoginState.initial()';
+    return 'AuthState.initial()';
   }
 
   @override
@@ -208,7 +207,7 @@ class _$LoginInitial implements LoginInitial {
   }
 }
 
-abstract class LoginInitial implements LoginState {
+abstract class LoginInitial implements AuthState {
   const factory LoginInitial() = _$LoginInitial;
 }
 
@@ -221,7 +220,7 @@ abstract class _$$LoginInProgressCopyWith<$Res> {
 
 /// @nodoc
 class __$$LoginInProgressCopyWithImpl<$Res>
-    extends _$LoginStateCopyWithImpl<$Res, _$LoginInProgress>
+    extends _$AuthStateCopyWithImpl<$Res, _$LoginInProgress>
     implements _$$LoginInProgressCopyWith<$Res> {
   __$$LoginInProgressCopyWithImpl(
       _$LoginInProgress _value, $Res Function(_$LoginInProgress) _then)
@@ -235,7 +234,7 @@ class _$LoginInProgress implements LoginInProgress {
 
   @override
   String toString() {
-    return 'LoginState.inProgress()';
+    return 'AuthState.inProgress()';
   }
 
   @override
@@ -328,7 +327,7 @@ class _$LoginInProgress implements LoginInProgress {
   }
 }
 
-abstract class LoginInProgress implements LoginState {
+abstract class LoginInProgress implements AuthState {
   const factory LoginInProgress() = _$LoginInProgress;
 }
 
@@ -343,7 +342,7 @@ abstract class _$$LoginSuccessCopyWith<$Res> {
 
 /// @nodoc
 class __$$LoginSuccessCopyWithImpl<$Res>
-    extends _$LoginStateCopyWithImpl<$Res, _$LoginSuccess>
+    extends _$AuthStateCopyWithImpl<$Res, _$LoginSuccess>
     implements _$$LoginSuccessCopyWith<$Res> {
   __$$LoginSuccessCopyWithImpl(
       _$LoginSuccess _value, $Res Function(_$LoginSuccess) _then)
@@ -373,7 +372,7 @@ class _$LoginSuccess implements LoginSuccess {
 
   @override
   String toString() {
-    return 'LoginState.success(name: $name)';
+    return 'AuthState.success(name: $name)';
   }
 
   @override
@@ -474,7 +473,7 @@ class _$LoginSuccess implements LoginSuccess {
   }
 }
 
-abstract class LoginSuccess implements LoginState {
+abstract class LoginSuccess implements AuthState {
   const factory LoginSuccess(final String name) = _$LoginSuccess;
 
   String get name;
@@ -494,7 +493,7 @@ abstract class _$$LoginFailedCopyWith<$Res> {
 
 /// @nodoc
 class __$$LoginFailedCopyWithImpl<$Res>
-    extends _$LoginStateCopyWithImpl<$Res, _$LoginFailed>
+    extends _$AuthStateCopyWithImpl<$Res, _$LoginFailed>
     implements _$$LoginFailedCopyWith<$Res> {
   __$$LoginFailedCopyWithImpl(
       _$LoginFailed _value, $Res Function(_$LoginFailed) _then)
@@ -524,7 +523,7 @@ class _$LoginFailed implements LoginFailed {
 
   @override
   String toString() {
-    return 'LoginState.failed(error: $error)';
+    return 'AuthState.failed(error: $error)';
   }
 
   @override
@@ -625,7 +624,7 @@ class _$LoginFailed implements LoginFailed {
   }
 }
 
-abstract class LoginFailed implements LoginState {
+abstract class LoginFailed implements AuthState {
   const factory LoginFailed(final String error) = _$LoginFailed;
 
   String get error;
@@ -643,7 +642,7 @@ abstract class _$$LoginSignedOutCopyWith<$Res> {
 
 /// @nodoc
 class __$$LoginSignedOutCopyWithImpl<$Res>
-    extends _$LoginStateCopyWithImpl<$Res, _$LoginSignedOut>
+    extends _$AuthStateCopyWithImpl<$Res, _$LoginSignedOut>
     implements _$$LoginSignedOutCopyWith<$Res> {
   __$$LoginSignedOutCopyWithImpl(
       _$LoginSignedOut _value, $Res Function(_$LoginSignedOut) _then)
@@ -657,7 +656,7 @@ class _$LoginSignedOut implements LoginSignedOut {
 
   @override
   String toString() {
-    return 'LoginState.signedOut()';
+    return 'AuthState.signedOut()';
   }
 
   @override
@@ -750,6 +749,6 @@ class _$LoginSignedOut implements LoginSignedOut {
   }
 }
 
-abstract class LoginSignedOut implements LoginState {
+abstract class LoginSignedOut implements AuthState {
   const factory LoginSignedOut() = _$LoginSignedOut;
 }
